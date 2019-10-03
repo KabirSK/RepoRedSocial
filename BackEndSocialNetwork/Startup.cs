@@ -36,19 +36,11 @@ namespace BackEndSocialNetwork
                     });
             });
 
-            services.AddTransient<IRedSocialDataProvider>();
+            services.AddTransient<IRedSocialDataProvider,RedSocialDataProvider>();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddMvc();
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
 
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +48,6 @@ namespace BackEndSocialNetwork
         {
             app.UseCors("AllowAll");
             app.UseDefaultFiles();
-            app.UseStaticFiles();
 
             if (env.IsDevelopment())
             {
@@ -68,7 +59,6 @@ namespace BackEndSocialNetwork
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
