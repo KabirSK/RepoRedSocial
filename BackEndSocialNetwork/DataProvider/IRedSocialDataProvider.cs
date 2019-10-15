@@ -9,5 +9,6 @@ namespace BackEndSocialNetwork.DataProvider
     public interface IRedSocialDataProvider
     {
         List<Usuario> ListarUsuarios(Usuario usuario);
+        List<Resultados> InsertarNuevoUsuario(Usuario usuario);
     }
 }

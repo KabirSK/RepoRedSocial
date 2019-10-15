@@ -27,5 +27,12 @@ namespace BackEndSocialNetwork.Controllers
         {
             return this.redSocialDataProvider.ListarUsuarios(usuario);
         }
+
+        [HttpPost]
+        [Route("[action]")]
+        public List<Resultados>  InsertarNuevoUsuario([FromBody]Usuario usuario)
+        {
+            return this.redSocialDataProvider.InsertarNuevoUsuario(usuario);
+        }
     }
 }
